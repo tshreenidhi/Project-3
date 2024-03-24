@@ -1,27 +1,28 @@
-Team 3
-Members: Marco 
-Ryan Sambila
-Sowmya Kotipalli
-Thotadamoole Shreenidhi
+Project 3: World Happiness Index and Sentiment Analysis
+
+Team 3 Members: 
+
+1. Sowmya Kotipalli
+2. Marco Nigro
+3. Ryan Sambila
+4. Shreenidihi Thotadamoole
 
 
-World Happiness Index and Sentiment Analysis
+Project name and Details: World Happiness Index and Sentiment Analysis.
+As part of this data Analysis project, we are trying to analyze and visualize the world happiness data and understand the impact of world happiness to "Social media sentiments".
+We are trying to answer few of the below questions using our analysis and data clean up.
+Find the corelation between social media sentiment and happiness index of the country
+Find the corelation happiness index and generosity
+Find the corelation happiness index and GDP of the country
+Find the corelation between happiness index and social support / curruption.
 
-● A brief articulation of your chosen topic and rationale
-World Happiness Index and Sentiment Analysis : Find the corelation between social media sentiment and happiness of the country.
-● A link to your dataset(s) and a screenshot of the metadata, if it exists.
-https://www.kaggle.com/datasets/kashishparmar02/social-media-sentiments-analysis-dataset
-https://www.kaggle.com/datasets/joebeachcapital/world-happiness-report-2013-2023/data?select=WorldHappinessIndex2013-2023.csv
+Data Ethics: As part of this project, we have also provided a due consideration for data ethics and have studies 4 types of data classification.
+1. Public
+2. Internal
+3. Confidential
+4. Restricted.
 
-● Three or four screenshots of relevant, “inspiring” visualizations that show your creative ideas
-(visualization track only)
-Corelation of positive sentiment Vs happiness index 
-Corelation of negative sentiment Vs happiness index
-Fluxuation / progression of positive/negative sentiments over the year and happiness index
-Which social media has shown more +ve and -Ve sentiments
-How the GDP relates to countries happiness (generocity, social support )
+A link to your dataset(s) and a screenshot of the metadata, . https://www.kaggle.com/datasets/kashishparmar02/social-media-sentiments-analysis-dataset https://www.kaggle.com/datasets/joebeachcapital/world-happiness-report-2013-2023/data?select=WorldHappinessIndex2013-2023.csv
 
-● A sketch of the final design--any visual representation 
-of how you see your visualization being laid out (a photo of an actual sketch, a slide from Google Slides, Canva, Figma, etc.)
 
-Will be updated 
+Project also provides a interactive webpage where we can select the country name from the drop down menue and the charts based on the selected country.
