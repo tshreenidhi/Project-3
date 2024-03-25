@@ -1,0 +1,37 @@
+.dashboard {
+
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+.dashboard p {
+    margin: 0;
+}
+
+.card-header {
+    border: 1px solid #00a3fb;
+    padding: 20px;
+    background-color: #347604;
+    margin-bottom: 1px;
+}
+
+.card-primary{
+    border: 2px solid #f7fff8;
+}
+
+.card-title {
+    margin: 200;
+    font-weight: bold; /* Make the text bold */
+    font-size: 18px; /* Modify the font size */
+    color: #ffffff;
+}
+
+.title_page{
+    border: 1px solid #75c8f5;
+    padding: 20px;
+    background-color: #347604;
+    margin-bottom: 1px;
+    color: #ffffff;
+}
+
+
