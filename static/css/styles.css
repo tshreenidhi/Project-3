@@ -1,5 +1,8 @@
 .dashboard {
+<<<<<<< HEAD
 
+=======
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
     background-color: #f9f9f9;
     margin-bottom: 20px;
 }
@@ -13,6 +16,10 @@
     padding: 20px;
     background-color: #347604;
     margin-bottom: 1px;
+<<<<<<< HEAD
+=======
+    border-radius: 5px;
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
 }
 
 .card-primary{
@@ -34,4 +41,15 @@
     color: #ffffff;
 }
 
+<<<<<<< HEAD
 
+=======
+#sample-metadata p {
+    font-size: 14px;
+}
+
+#sample-metadata p:hover {
+    font-size: 16px;
+    font-weight: 500;
+}
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5

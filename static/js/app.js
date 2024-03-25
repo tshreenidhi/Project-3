@@ -1,18 +1,28 @@
 
 let country_list = [];
+<<<<<<< HEAD
+=======
+let chart;
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
 
 function init() {
     // Get the dropdown menu element
     let selector = d3.select("#selDataset");
     
     // Function to populate the dropdown menu
+<<<<<<< HEAD
     d3.csv("UnionHappinessFile.csv").then((data) => {
     console.log(data);
     for ( i =0; i<data.length; i++) {
+=======
+    d3.csv("UnionHappinessFile_clean.csv").then((data) => {
+    for (i = 0; i < data.length; i++) {
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
         country_list.push(data[i].country);
         // year_list.push(data[i].Year);
         // ladder_score_list.push(data[i].ladder_score);
      }
+<<<<<<< HEAD
         samples = country_list;
         samples.forEach((id) => {
             selector.append("option").text(id).property("value", id);
@@ -31,6 +41,125 @@ function hbarChart(selectedId) {
     d3.csv("../data/UnionHappinessFile.csv").then(function (data){
         let country_selected = selectedId;
         console.log(country_selected);
+=======
+    
+    let country_list_sort = country_list.sort();
+    const uniqueArray = country_list_sort.filter((value, index) => country_list_sort.indexOf(value) === index);
+    samples = uniqueArray;
+    samples.forEach((id) => {
+        selector.append("option").text(id).property("value", id);
+    });
+    
+      // Use the first sample from the list to build the initial plots
+    let defaultSample = samples[0];
+    hbarChart(defaultSample, 1);
+    //   tableMetadata(defaultSample);
+    //   gaugePlot(defaultSample);
+
+    });
+};
+
+function renderChart(ladder_score_list2, year_list2) {
+  //console.log("Selected Country: " + country_selected + ", Sorted Ladder Score: " + ladder_score_list2);  
+  var options = {
+    series: [{ data: ladder_score_list2 }],
+    chart: {
+      width: 800, 
+      height: 600,
+      type: 'line',
+      dropShadow: {
+        enabled: true,
+        color: '#000',
+        top: 18,
+        left: 7,
+        blur: 10,
+        opacity: 0.2
+      },
+      toolbar: {
+        show: false
+      }
+    },
+    colors: ['#008631'],
+    dataLabels: {
+      enabled: true,
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    title: {
+      text: 'Happiness Index vs Year',
+      align: 'center',
+      style: {
+          fontSize:  '25px',
+          fontWeight:  'bold',
+          fontFamily:  undefined,
+      }
+    },
+    grid: {
+      borderColor: '#e7e7e7',
+      row: {
+        colors: ['#cefad0', 'transparent'], // takes an array which will be repeated on columns
+        opacity: 0.5
+      },
+    },
+    markers: {
+      size: 1
+    },
+    xaxis: {
+      categories: year_list2,
+      title: {
+        text: 'Year',
+        style: {
+          fontSize:  '16px',
+          fontWeight:  'bold',
+          fontFamily:  undefined,
+        },
+      }
+    },
+    yaxis: {
+      title: {
+        text: 'Happiness Index',
+        style: {
+          fontSize:  '16px',
+          fontWeight:  'bold',
+          fontFamily:  undefined,
+        },
+      },
+      labels: {
+          formatter: function(val) {
+              return val.toFixed(2);
+          }
+      },
+      min: 0,
+      max: 10
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'right',
+      floating: true,
+      offsetY: -25,
+      offsetX: -5
+    }
+    };
+    console.log("Chart data: " + options.series[0].data);
+    let chart = new ApexCharts(document.querySelector("#line"), options);
+    chart.render();
+    return chart;
+}
+
+function refreshChart(chart, ladder_score_list2, year_list2) {
+   chart.updateSeries([{ data:ladder_score_list2 }]);
+   chart.updateOptions({
+    xaxis: {
+      categories: year_list2
+    }
+   });  
+}
+
+function hbarChart(selectedId, first) {
+    d3.csv("UnionHappinessFile_clean.csv").then(function(data) {
+        let country_selected = selectedId;
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
         let country_frame = [];
         let year_list = [];
         let ladder_score_list = [];
@@ -39,20 +168,37 @@ function hbarChart(selectedId) {
         let generosity_list = [];
         let corruption_list = [];
 
+<<<<<<< HEAD
         for ( i =0; i<data.length; i++) {
             if (data[i].country == country_selected) {
+=======
+        for (i = 0; i < data.length; i++) {
+            if (data[i].country === country_selected) {
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
                 country_frame.push(data[i].country);
                 year_list.push(data[i].Year);
                 ladder_score_list.push(Number(data[i].ladder_score));
                 social_suport_list.push(Number(data[i].social_support));
                 generosity_list.push(Number(data[i].generosity));
                 gdp_list.push(Number(data[i].gdp_per_capita));
+<<<<<<< HEAD
                 corruption_list.push(Number(data[i].corruption));          
             };
         }
         console.log(country_frame);
         console.log(ladder_score_list);
         console.log(year_list);
+=======
+                corruption_list.push(Number(data[i].corruption));       
+            };
+        }
+
+        meta_table(corruption_list, ladder_score_list, social_suport_list, gdp_list);
+
+        //console.log(country_frame);
+        //console.log(ladder_score_list);
+        //console.log(year_list);
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
         // Sorting the list and getting the indices
         var sortedIndices = year_list.map(function(value, index) {
             return { value: value, index: index };
@@ -63,15 +209,23 @@ function hbarChart(selectedId) {
         });
         // Using the sorted indices to reorder another list
 
+<<<<<<< HEAD
         console.log(sortedIndices);
         let ladder_score_list2 = sortedIndices.map(function(index) {
             return ladder_score_list[index];
         });
 
+=======
+        //console.log(sortedIndices);
+        let ladder_score_list2 = sortedIndices.map(function(index) {
+            return ladder_score_list[index];
+        });
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
         let year_list2 = sortedIndices.map(function(index) {
             return year_list[index];
         });
 
+<<<<<<< HEAD
         let xArray = year_list2;
         let yArray = ladder_score_list2;
 
@@ -103,6 +257,42 @@ function hbarChart(selectedId) {
         Plotly.newPlot("line", data2, layout);
 
 
+=======
+        // let xArray = year_list2;
+        // let yArray = ladder_score_list2;
+
+        // // Define Data
+        // let data2 = [{
+        // x: xArray,
+        // y: yArray,
+        // mode: "lines",
+        // type: "scatter"
+        // }];
+
+        // // Define Layout
+        // let layout = {
+        // xaxis: {title: "Year"},
+        // yaxis: {range: [3, 8], title: "Happiness index"},
+        // width: 800,
+        // height: 600,
+        // title: "Happiness index vs Year",
+        // margin: { // Adjust margins to provide space for labels
+        //     l: 80, // Left margin
+        //     r: 80, // Right margin
+        //     b: 80, // Bottom margin
+        //     t: 80, // Top margin
+        //     pad: 4 // Padding between axis and plot area
+        // }
+        // };
+
+        // // Display using Plotly
+        // Plotly.newPlot("line", data2, layout);
+        if (first == 1) {
+          chart = renderChart(ladder_score_list2, year_list2);
+        } else {
+          refreshChart(chart, ladder_score_list2, year_list2);
+        }
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
 
         // Correlation chart for Social support
         let xArray2social = ladder_score_list;
@@ -111,6 +301,11 @@ function hbarChart(selectedId) {
         // Calculate Sums
         let xSum2=0, ySum2=0 , xxSum2=0, xySum2=0;
         let count_social = xArray2social.length;
+<<<<<<< HEAD
+=======
+        let yArray2social_count = yArray2social.length;
+
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
         for (let i = 0, len = count_social; i < count_social; i++) {
         xSum2 += xArray2social[i];
         ySum2 += yArray2social[i];
@@ -124,16 +319,28 @@ function hbarChart(selectedId) {
         // Generate values
         let xValues_social = [];
         let yValues_social = [];
+<<<<<<< HEAD
         xArray3social = xArray2social.sort((a,b) => a - b);
         len = xArray3social.length-1;
 
         for (let x of xArray3social) {
+=======
+        //xArray3social = xArray2social.sort((a,b) => a - b);
+        //len = xArray3social.length-1;
+
+        for (let x of xArray2social) {
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
             xValues_social.push(x);
             yValues_social.push(x * slope_social + intercept_social);
         }
         let data3social = [{
+<<<<<<< HEAD
             x: xArray2social,
             y: yArray2social,
+=======
+            x: ladder_score_list,
+            y: social_suport_list,
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
             mode: "markers",
             type: "scatter",
             name: "Data Points"
@@ -147,7 +354,11 @@ function hbarChart(selectedId) {
 
         // Define Layout
         let layout2social = {
+<<<<<<< HEAD
         xaxis: { title: "Happyness index "},
+=======
+        xaxis: { title: "Happiness index "},
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
         yaxis: { title: "Social support"},
         showlegend: false,
         width: 400,
@@ -165,6 +376,11 @@ function hbarChart(selectedId) {
         // Calculate Sums
         let xSum=0, ySum=0 , xxSum=0, xySum=0;
         let count_gdp = xArray2gdp.length;
+<<<<<<< HEAD
+=======
+        let yArray2gdp_count = yArray2gdp.length;
+
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
         for (let i = 0, len = count_gdp; i < count_gdp; i++) {
         xSum += xArray2gdp[i];
         ySum += yArray2gdp[i];
@@ -179,11 +395,19 @@ function hbarChart(selectedId) {
         // Generate values
         let xValues_gdp = [];
         let yValues_gdp = [];
+<<<<<<< HEAD
         xArray3gdp = xArray2gdp.sort((a,b) => a - b);
         len = xArray3gdp.length-1
         console.log(len);
 
         for (let x of xArray3gdp) {
+=======
+        //xArray3gdp = xArray2gdp.sort((a,b) => a - b);
+        //len = xArray3gdp.length-1
+        //console.log(len);
+
+        for (let x of xArray2gdp) {
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
             xValues_gdp.push(x);
             yValues_gdp.push(x * slope_gdp + intercept_gdp);
         }
@@ -204,7 +428,11 @@ function hbarChart(selectedId) {
 
         // Define Layout
         let layout2gdp = {
+<<<<<<< HEAD
         xaxis: { title: "Happyness index "},
+=======
+        xaxis: { title: "Happiness index "},
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
         yaxis: { title: "GDP per capita"},
         showlegend: false,
         width: 400,
@@ -214,7 +442,10 @@ function hbarChart(selectedId) {
         // Display using Plotly
         Plotly.newPlot("gdp", data3gdp, layout2gdp); 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
         // Correlation chart for corruption
         let xArray2 = ladder_score_list;
         let yArray2 = corruption_list;
@@ -222,6 +453,7 @@ function hbarChart(selectedId) {
         // Calculate Sums
         let xSum3=0, ySum3=0 , xxSum3=0, xySum3=0;
         let count = xArray2.length;
+<<<<<<< HEAD
         for (let i = 0, len = count; i < count; i++) {
         xSum3 += xArray2[i];
         ySum3 += yArray2[i];
@@ -229,6 +461,17 @@ function hbarChart(selectedId) {
         xySum3 += xArray2[i] * yArray2[i];
         }
 
+=======
+        let yArray2_count = yArray2.length;
+
+        for (let i = 0, len = count; i < count; i++) {
+          xSum3 += xArray2[i];
+          ySum3 += yArray2[i];
+          xxSum3 += xArray2[i] * xArray2[i];
+          xySum3 += xArray2[i] * yArray2[i];
+        }
+        
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
         // Calculate slope and intercept
         let slope = (count * xySum3 - xSum3 * ySum3) / (count * xxSum3 - xSum3 * xSum3);
         let intercept = (ySum3 - slope * xSum3) / count;
@@ -236,10 +479,17 @@ function hbarChart(selectedId) {
         // Generate values
         let xValues = [];
         let yValues = [];
+<<<<<<< HEAD
         xArray3 = xArray2.sort((a,b) => a - b);
         len = xArray3.length-1
 
         for (let x of xArray3) {
+=======
+        //xArray3 = xArray2.sort((a,b) => a - b);
+        //len = xArray3.length-1
+
+        for (let x of xArray2) {
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
             xValues.push(x);
             yValues.push(x * slope + intercept);
         }
@@ -260,7 +510,11 @@ function hbarChart(selectedId) {
 
         // Define Layout
         let layout2 = {
+<<<<<<< HEAD
         xaxis: { title: "Happyness index "},
+=======
+        xaxis: { title: "Happiness index "},
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
         yaxis: { title: "Corruption"},
         width: 500,
         height: 400
@@ -272,9 +526,60 @@ function hbarChart(selectedId) {
 })
 }
 
+<<<<<<< HEAD
 function optionChanged(value) {
     hbarChart(value);
 
+=======
+function find_average(x) {
+    let average = 0;
+    let average_tmp = 0;
+    let count = x.length;
+    let xSum = 0;
+    for(let i = 0; i < count; i++){
+        xSum = xSum + x[i];
+    } 
+    average_tmp = xSum / count;
+    average = average_tmp.toFixed(2);
+    return average;
+}
+
+function meta_table(corruption, happiness, social_support, gdp_per_capita){
+
+    // d3.json(url).then(function(data) {
+    //   console.log(data);
+    //   let sample_metadata = data.metadata;
+    //   let newArray = sample_metadata.filter(number => number.id == x)[0];
+  
+      let selector = d3.select("#sample-metadata");
+      selector.html("");
+
+      let average_values = [];
+      let average_happiness = find_average(happiness);
+      //console.log(average_happiness);
+      let average_corruption = find_average(corruption);
+      //console.log(average_corruption);
+      let average_social_support = find_average(social_support);
+      //console.log(average_social_support);
+      let average_gdp = find_average(gdp_per_capita);
+      //console.log(average_gdp);
+      average_values.push("Avg Ladder Score: " + average_happiness);
+      average_values.push("Avg Corruption: " + average_corruption);
+      average_values.push("Avg Social Support: " + average_social_support);
+      average_values.push("Avg GDP: " + average_gdp);
+      //console.log(average_values);
+
+      average_values.forEach((avg) => {
+        selector
+            .append("p")
+            .text(avg)
+      });
+  }
+
+
+function optionChanged(value) {
+    hbarChart(value, 2);
+>>>>>>> e027abf3735487a57d16c5011f5f74caba03fdd5
 }
 
 init();
