@@ -58,7 +58,7 @@ function renderChart(ladder_score_list2, year_list2) {
       curve: 'smooth'
     },
     title: {
-      text: 'Happiness Index vs Year',
+      text: 'Yearly Happiness Levels',
       align: 'center',
       style: {
           fontSize:  '25px',
