@@ -28,14 +28,6 @@ CREATE TABLE happiness_years (
 	social_support DECIMAL,
 	corruption DECIMAL);
 	
---Create table for Happiness Index
-CREATE TABLE happiness_index (
-	id serial PRIMARY KEY,
-	country VARCHAR (30) NOT NULL,
-	year INTEGER NOT NULL,
-	index DECIMAL,
-	rank DECIMAL)
-	
 --Constraints
 ALTER TABLE sentiments ADD CONSTRAINT fk_sentiments_sentiment FOREIGN KEY(sentiment)
 REFERENCES sentiments_xref (sentiment);
@@ -44,6 +36,4 @@ REFERENCES sentiments_xref (sentiment);
 -- 1. Load "sentiments_xref" table with the "sentiments_xref" file
 -- 2. Load "Sentiments" table with the "sentiments" file.
 -- 3. Load "happiness_years" table with the "UnionHappinessFile" file. 
-	-- a. Remove the id searal primary key from import
--- 4. Load "Happiness_index" table with the "WorldHappinessIndex2013-2023" file. 
 	-- a. Remove the id searal primary key from import
